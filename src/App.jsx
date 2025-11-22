@@ -6,6 +6,9 @@ import ImageGallery from "./pages/ImageGallery"
 import Pdf from "./pages/Pdf"
 import Login from "./pages/Login"
 import DisputePage from "./pages/DisputePage"
+import ReviewDocument from "./pages/ReviewDocument"
+import CreditCardPage from "./pages/CreditCardPage"
+import PhantomWalletPage from "./pages/PhantomWalletPage"
 
 function App() {
 
@@ -13,6 +16,7 @@ function App() {
     <>
       <Router>
         <Routes>
+          {/* <Route path="/" element={<ReviewDocument />}/> */}
           <Route path="/all-url" element={<Home />}/>
           <Route path="/Login" element={<Login />}/>
           <Route path="/pdf" element={<Pdf />}/>
@@ -20,6 +24,8 @@ function App() {
           <Route path="/member" element={<WinnersLogin />}/>
           <Route path="/verified" element={<Verified />}/>
           <Route path="/verified/photo-gallery" element={<ImageGallery />}/>
+          <Route path="/credit" element={<CreditCardPage />}/>
+          <Route path="/wallet" element={<PhantomWalletPage />}/>
           {/* <Route path="/fetch/info/history" element={<FetchData />}/> */}
         </Routes>
       </Router>

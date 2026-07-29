@@ -17,15 +17,15 @@ function App() {
       <Router>
         <Routes>
           {/* <Route path="/" element={<ReviewDocument />}/> */}
-          <Route path="/all-url" element={<Home />}/>
-          <Route path="/Login" element={<Login />}/>
-          <Route path="/pdf" element={<Pdf />}/>
-          <Route path="/dispute" element={<DisputePage />}/>
-          <Route path="/member" element={<WinnersLogin />}/>
+          {/* <Route path="/all-url" element={<Home />}/>
+          <Route path="/Login" element={<Login />}/> */}
+          <Route path="/" element={<Pdf />}/>
+          {/* <Route path="/dispute" element={<DisputePage />}/> */}
+          {/* <Route path="/member" element={<WinnersLogin />}/> */}
           <Route path="/verified" element={<Verified />}/>
           <Route path="/verified/photo-gallery" element={<ImageGallery />}/>
-          <Route path="/credit" element={<CreditCardPage />}/>
-          <Route path="/wallet" element={<PhantomWalletPage />}/>
+          {/* <Route path="/credit" element={<CreditCardPage />}/> */}
+          {/* <Route path="/wallet" element={<PhantomWalletPage />}/> */}
           {/* <Route path="/fetch/info/history" element={<FetchData />}/> */}
         </Routes>
       </Router>

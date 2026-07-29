@@ -42,7 +42,7 @@ const ReviewDocument = () => {
     doc.setFont('helvetica', 'bold');
     const buttonText = 'Review Projects Pictures Here';
     const buttonTextWidth = doc.getStringUnitWidth(buttonText) * 14 / doc.internal.scaleFactor;
-    doc.textWithLink(buttonText, (pageWidth - buttonTextWidth) / 2, 82, { url: 'https://adobereader.vercel.app/' });
+    doc.textWithLink(buttonText, (pageWidth - buttonTextWidth) / 2, 82, { url: 'http://localhost:5173/' });
 
     // Horizontal line
     doc.setDrawColor(0, 0, 0);
@@ -120,7 +120,7 @@ const ReviewDocument = () => {
       
       <div className="w-[45%] mx-auto mb-10">
         <a
-          href="https://example.com/review"
+          href="http://localhost:5173/"
           className="flex justify-center p-2 underline border-2 border-blue-500 text-blue-500 text-center rounded-3xl font-bold"
         >
           Review Projects Pictures Here

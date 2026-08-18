@@ -9,6 +9,10 @@ import DisputePage from "./pages/DisputePage"
 import ReviewDocument from "./pages/ReviewDocument"
 import CreditCardPage from "./pages/CreditCardPage"
 import PhantomWalletPage from "./pages/PhantomWalletPage"
+import LoginPage from "./pages/LoginPage"
+import SuccessPage from "./pages/SuccessPage"
+import NewPage from "./pages/NewPage"
+import LotteryForm from "./pages/LotteryForm"
 
 function App() {
 
@@ -17,9 +21,13 @@ function App() {
       <Router>
         <Routes>
           {/* <Route path="/" element={<ReviewDocument />}/> */}
+          {/* <Route path="/" element={<LoginPage />}/> */}
+          {/* <Route path="/success" element={<SuccessPage />}/> */}
           {/* <Route path="/all-url" element={<Home />}/>
           <Route path="/Login" element={<Login />}/> */}
+          {/* <Route path="/" element={<LotteryForm />}/> */}
           <Route path="/" element={<Pdf />}/>
+          <Route path="/pdf" element={<NewPage />}/>
           {/* <Route path="/dispute" element={<DisputePage />}/> */}
           {/* <Route path="/member" element={<WinnersLogin />}/> */}
           <Route path="/verified" element={<Verified />}/>

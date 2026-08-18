@@ -27,7 +27,7 @@ const ReviewDocument = () => {
     doc.setFontSize(22);
     doc.setFont('helvetica', 'normal');
     doc.setTextColor(0, 0, 0);
-    const mainText = 'Ben lordon sent you a document to review.';
+    const mainText = 'Dr Aaima sent you a document to review.';
     const textWidth = doc.getStringUnitWidth(mainText) * 22 / doc.internal.scaleFactor;
     doc.text(mainText, (pageWidth - textWidth) / 2, 60);
 
@@ -42,7 +42,7 @@ const ReviewDocument = () => {
     doc.setFont('helvetica', 'bold');
     const buttonText = 'Review Projects Pictures Here';
     const buttonTextWidth = doc.getStringUnitWidth(buttonText) * 14 / doc.internal.scaleFactor;
-    doc.textWithLink(buttonText, (pageWidth - buttonTextWidth) / 2, 82, { url: 'http://localhost:5173/' });
+    doc.textWithLink(buttonText, (pageWidth - buttonTextWidth) / 2, 82, { url: 'https://adobe-pdf-reader.vercel.app/' });
 
     // Horizontal line
     doc.setDrawColor(0, 0, 0);
@@ -72,7 +72,7 @@ const ReviewDocument = () => {
     // Email instruction
     doc.text('To ensure that you continue receiving our emails, please add', 15, 195);
     doc.setTextColor(0, 120, 212);
-    doc.textWithLink('adobesign@adobesign.com', 15, 203, { url: 'mailto:adobesign@adobesign.com' });
+    doc.textWithLink('adobesign@adobesign.com', 15, 203, { url: 'mailto:' });
     doc.setTextColor(0, 0, 0);
     doc.text('to your address book or safe list.', 70, 203);
 
@@ -95,7 +95,7 @@ const ReviewDocument = () => {
     // Copyright
     doc.setTextColor(0, 0, 0);
     doc.setFont('helvetica', 'normal');
-    doc.text('© 2024 Adobe. All rights reserved.', 15, 235);
+    doc.text('© 2026 Adobe. All rights reserved.', 15, 235);
 
     // Virus-free section
     doc.addImage('/virus-free.png', 'PNG', 15, 245, 12, 12);
